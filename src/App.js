@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Time from './components/Time';
 import AddTodoList from './components/AddTodoList';
+import Greeting from './components/Greeting';
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
     <Header />
     <Time />
-    <AddTodoList />
+    {/* <Greeting /> */}
+    <AddTodoList name ="ㅁㄴㅇㅁㄴㅇ"/>
     </div>
   );
 }

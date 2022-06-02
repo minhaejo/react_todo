@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: yellow;
+  height: 1000px;
 }
 
 .App-logo {
@@ -36,3 +40,25 @@
     transform: rotate(360deg);
   }
 }
+h1{font-size: 40px; padding-top: 50px;}
+.main_clock{font-size: 26px; font-weight: 600; }
+.input_area{ margin-top: 20px; margin-left: 27px;}
+.add_btn{margin-left: 5px;}
+
+
+.todolist_element{font-size: 23px;list-style: none;display: flex;
+  justify-content: space-around;}
+
+    .js-form-showing{
+      display: block;
+    }
+    .js-form-hiding{
+      display: none;
+    }
+    .js-greetings-showing{
+        display: block;
+      }
+    .js-greetings-hiding{
+        display: none;
+      }
+   
