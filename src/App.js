@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Time from './components/Time';
 import AddTodoList from './components/AddTodoList';
 import Greeting from './components/Greeting';
+import Greetingjs from './components/Greetingjs';
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
     <div className="App">
     <Header />
     <Time />
-    {/* <Greeting /> */}
-    <AddTodoList name ="ㅁㄴㅇㅁㄴㅇ"/>
+    <Greeting name=""/>
+    {/* <Greetingjs /> */}
+    <AddTodoList />
     </div>
   );
 }

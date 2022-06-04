@@ -48,7 +48,7 @@ h1{font-size: 40px; padding-top: 50px;}
 
 .todolist_element{font-size: 23px;list-style: none;display: flex;
   justify-content: space-around;}
-
+/* 
     .js-form-showing{
       display: block;
     }
@@ -61,4 +61,4 @@ h1{font-size: 40px; padding-top: 50px;}
     .js-greetings-hiding{
         display: none;
       }
-   
+    */

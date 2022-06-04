@@ -46,7 +46,9 @@ function AddTodoList() {
  
   
   return (
+    <>
     <form className="todo_form" onSubmit={handleSubmit}>
+
       <input
         type="text"
         className="input_area"
@@ -55,14 +57,17 @@ function AddTodoList() {
         placeholder="할 일을 입력해주세요"
         onChange={onChangeInput}
       />
+
       <button className="add_btn" type="submit" onClick={onClickAddButton}>
         추가하기
       </button>
-      <ul className="todolist_container">
+
+    </form>
+
+     <ul className="todolist_container">
         {todoList.map((todo, i) => (
           <li key={i} className="todolist_element" >
             {todo.text}
-            {todo.id}
             <button
              className="del_btn"
               onClick={() => {
@@ -74,7 +79,8 @@ function AddTodoList() {
           </li>
         ))}
       </ul>
-    </form>
+      
+      </>
   );
 }
 

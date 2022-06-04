@@ -1,70 +1,115 @@
-// import { useState } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 
-
-
-// function Greeting() {
-//     const USER_LS= "currentUser"
-//     const SHOWING_CN ="showing";
-
-//     const [nameInput,setNameInput] = useState("")
-
-
-
-//     const saveName = (text) => {
-//         localStorage.setItem(USER_LS,text)
-//     }
-
-    
- 
-//     const handleNameInputValue = (e) =>{
-//        setNameInput(e.target.value)
-//        console.log(nameInput)
-//     }
-//     const handleNameSubmit = (e) => {
-//      e.preventDefault()
-//      paintGreeting(nameInput)
-//      saveName(nameInput)
-//     }
-    
-//     const askForName = ({name}) => {
-//      //클레스 리스트 무엇? 이거없이 어캐 가렸다가 나오게함..??
-     
-//     return (
-//         <h4 className="js-greetings greetings" style={name==="" : }>{nameInput}</h4>
-//     )
-//     }
-//     const paintGreeting = () => {
-     
-//     }
+function Greeting() {
+    const USER_LS= "currentUser"
     
 
-//     const loadName = () =>{
-//         const currentUser = localStorage.getItem(USER_LS)
-//         if (currentUser === null) {
-//             askForName()
-//         }
-//         paintGreeting()
-//     }
-//     const init = () => {
-//         loadName()
-//     }
-//     init()
+    const [nameInput,setNameInput] = useState("")
+    const inputRef = useRef("")
+    
+    useEffect(()=>{
+    inputRef.current.focus()
+    },[])
+    
+    const saveName = (text) => {
+        localStorage.setItem(USER_LS,text)
+    }
 
-//     return(
-//     <>
-//     <form className="js-form form" onSubmit={handleNameSubmit} name={""} >
-//     <input type="text" 
-//     placeholder="What is your name?"
-//     value={nameInput}
-//     onChange={handleNameInputValue}/>
-//     </form>
+    const handleNameInputValue = (e) =>{
+       setNameInput(e.target.value)
+       console.log(nameInput)
+    }
+
+    // const handleNameSubmit = (e) => {
+   
+    // }
+     const handleNameSubmit = (event) => {
+        if (event.keyCode === 13) {
+            event.preventDefault()
+             paintGreeting(nameInput)
+         saveName(nameInput)
+            return(
+                <>
+              {nameInput && <h4 className="js-greetings greetings">`Hello {nameInput}`</h4>}
+              </>
+            )
+        }
+    }
     
-//     </>
-//     )
+    const askForName = () => {
+     //클레스 리스트 무엇? 이거없이 어캐 가렸다가 나오게함..??
+    return (
+        <div>
+        {nameInput === "" && <form className="js-form form" onSubmit={handleNameSubmit} name={""} >
+        <input type="text" 
+        placeholder="What is your name?"
+        value={nameInput}
+        onChange={handleNameInputValue}/>
+        </form>}
+        </div>
+    )   
+    }
+
+    const paintGreeting = () => {
+        
+        return (
+            <div>
+                 {nameInput && <h4 className="js-greetings greetings">`Hello {nameInput}`</h4>}
+            </div>
+        )
+    }
+
+    const loadName = () =>{
+        const currentUser = localStorage.getItem(USER_LS)
+        if (currentUser === null) {
+            askForName()
+        }
+        paintGreeting()
+    }
+    const init = () => {
+        loadName()
+    }
+    init()
+
+
+//     const handleSubmit = (event) => {
+//     if (event.keyCode === 13) {
+//     event.preventDefault();
+//     setTextValue("");
+//     addTodo();
+//     }
+//   }
+    return(
+    <>
+    {/* <form className="js-form form" name={""} >
+    <input type="text" 
+    placeholder="What is your name?"
+    value={nameInput}
+    onChange={handleNameInputValue}/>
+    </form> */}
+    <div>
+     {nameInput.keyCode !== 13 && <form className="js-form form"
+     ref={inputRef}
+     onSubmit={handleNameSubmit} name={""} >
+        <input type="text" 
+        placeholder="What is your name?"
+        value={nameInput}
+        onChange={handleNameInputValue}/>
+        </form>} 
+         <div>
+        {nameInput.keyCode === "enter" &&  <h4 className="js-greetings greetings">Hello {nameInput}
+         </h4>}
+        </div> 
+    </div>
     
-// }
-// export default Greeting
+    </>
+    )
+}
+export default Greeting
+
 // {/* <h1 style={name === 'Sara' ? right-panel-active : right-panel-inactive}>Hello, {name}</h1> */}
 
 // export default Greeting
@@ -106,3 +151,5 @@
 //     loadName();
 // }
 // init();
+
+
